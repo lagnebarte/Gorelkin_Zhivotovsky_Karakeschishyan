@@ -4,7 +4,7 @@ from datetime import datetime
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from telebot import types
 
-BOT_TOKEN = "7856265146:AAFc5CgMuXvxT27RCNVu7pZKznrKeE-JWhY"
+BOT_TOKEN = ""
 bot = telebot.TeleBot(BOT_TOKEN)
 
 DB_CONFIG = {
