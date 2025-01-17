@@ -51,6 +51,9 @@
        date_time TIMESTAMP,
        status VARCHAR(50)
    );
+   ALTER TABLE availability 
+   ADD CONSTRAINT unique_user_datetime 
+   UNIQUE (user_id, date_time);
    ```
 
 2. **Настройка бота**:
