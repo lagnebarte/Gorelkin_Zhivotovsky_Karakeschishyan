@@ -1,6 +1,3 @@
-from math import pi
-
-
 class Shape:
     """Геометрические фигуры"""
     name = 'геометрическая фигура'
@@ -19,8 +16,16 @@ class Rectangle(Shape):
 
     def __init__(self, width, height, x=0, y=0):
         super().__init__(x, y)
-        self.width = width
-        self.height = height
+        self._width = width
+        self._height = height
+
+    @property
+    def width(self):
+        return self._width
+
+    @property
+    def height(self):
+        return self._height
 
     def area(self):
         return self.width * self.height
@@ -33,51 +38,71 @@ class Rectangle(Shape):
                 f" с площадью {self.area()} и периметром {self.perimeter()}")
 
 
-class Square(Shape):
+class Square(Rectangle):
     """Квадраты"""
     name = 'квадрат'
 
     def __init__(self, side, x=0, y=0):
-        super().__init__(x, y)
-        self._side = side  # Используем одно свойство для стороны квадрата
+        super().__init__(side, side, x, y)
+
+
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, value):
+        self._height = self._width = value    # обновление высоты при изменении ширины
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, value):
+        self._width = self._height = value    # обновление ширины при изменении высоты
 
     @property
     def side(self):
         return self._side
 
-    @property
-    def area(self):
-        return self.side ** 2
+    @side.setter
+    def side(self, value):
+        self._width = self._height = self._side = value
 
-    @property
-    def perimeter(self):
-        return 4 * self.side
 
     def __repr__(self):
-        return (f"{Shape.__repr__(self)}, со стороной {self.side},"
-                f" с площадью {self.area} и периметром {self.perimeter}")
-
-
-class Circle(Shape):
-    """Круги"""
-    name = 'круг'
-
-    def __init__(self, radius, x=0, y=0):
-        super().__init__(x, y)
-        self.r = radius
-
-    def area(self):
-        return pi * self.r ** 2
-
-    def perimeter(self):
-        return 2 * pi * self.r
-
-    def __repr__(self):
-        return (f"{Shape.__repr__(self)}, с радиусом {self.r},"
+        return (f"{Shape.__repr__(self)}, со стороной {self.width},"
                 f" с площадью {self.area()} и периметром {self.perimeter()}")
 
 
 if __name__ == '__main__':
-    figures = [Rectangle(2, 3), Square(2, 1, 1), Circle(1)]
+    figures = [Rectangle(2, 3), Square(2, 1, 1)]
     for figure in figures:
         print(figure)
+        
+        
+        
+print("--------------Тесты--------------")        
+#тесты
+
+print("шаг 1") 
+square = Square(5)
+print(square)
+square.height = square.height *2
+print(square)
+
+print("шаг 2") 
+square.side = 4
+print(square)
+print(square.height, square.width)
+
+print("шаг 3") 
+square.height = 3
+print(square)
+print(square.height, square.width)
+
+print("шаг 4") 
+square.width = 2
+print(square)
+print(square.height, square.width)
