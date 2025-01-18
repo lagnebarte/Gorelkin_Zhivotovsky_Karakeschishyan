@@ -76,33 +76,32 @@ class Square(Rectangle):
                 f" с площадью {self.area()} и периметром {self.perimeter()}")
 
 
+def test():
+    print("--------------Тесты--------------")        
+  
+    print("шаг 1") 
+    square = Square(5)
+    print(square)
+    square.height = square.height *2
+    print(square)
+    
+    print("шаг 2") 
+    square.side = 4
+    print(square)
+    print(square.height, square.width)
+    
+    print("шаг 3") 
+    square.height = 3
+    print(square)
+    print(square.height, square.width)
+    
+    print("шаг 4") 
+    square.width = 2
+    print(square)
+    print(square.height, square.width)
+
+
+
+
 if __name__ == '__main__':
-    figures = [Rectangle(2, 3), Square(2, 1, 1)]
-    for figure in figures:
-        print(figure)
-        
-        
-        
-print("--------------Тесты--------------")        
-#тесты
-
-print("шаг 1") 
-square = Square(5)
-print(square)
-square.height = square.height *2
-print(square)
-
-print("шаг 2") 
-square.side = 4
-print(square)
-print(square.height, square.width)
-
-print("шаг 3") 
-square.height = 3
-print(square)
-print(square.height, square.width)
-
-print("шаг 4") 
-square.width = 2
-print(square)
-print(square.height, square.width)
+    test()
